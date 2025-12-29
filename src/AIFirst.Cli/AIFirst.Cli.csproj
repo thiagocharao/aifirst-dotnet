@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    
+    <PackageId>AIFirst.Cli</PackageId>
+    <Version>0.1.0-alpha</Version>
+    <Authors>Thiago Charao</Authors>
+    <Description>CLI tool for AIFirst.CSharp - pull-tools, gen, replay commands</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/thiagocharao/ai-first</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/thiagocharao/ai-first</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ai;mcp;cli;tools</PackageTags>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>aifirst</ToolCommandName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../AIFirst.Mcp/AIFirst.Mcp.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    
+    <PackageId>AIFirst.Mcp</PackageId>
+    <Version>0.1.0-alpha</Version>
+    <Authors>Thiago Charao</Authors>
+    <Description>MCP client for AIFirst.CSharp</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/thiagocharao/ai-first</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/thiagocharao/ai-first</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ai;mcp;tools</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../AIFirst.Core/AIFirst.Core.csproj" />
+  </ItemGroup>
+</Project>

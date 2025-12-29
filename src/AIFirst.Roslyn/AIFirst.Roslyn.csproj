@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    
+    <PackageId>AIFirst.Roslyn</PackageId>
+    <Version>0.1.0-alpha</Version>
+    <Authors>Thiago Charao</Authors>
+    <Description>Roslyn source generator and analyzer for AIFirst.CSharp</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/thiagocharao/ai-first</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/thiagocharao/ai-first</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ai;roslyn;source-generator;analyzer</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../AIFirst.Core/AIFirst.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.10.0" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

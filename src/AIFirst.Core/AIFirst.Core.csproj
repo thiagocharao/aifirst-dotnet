@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    
+    <!-- NuGet Package Metadata -->
+    <PackageId>AIFirst.Core</PackageId>
+    <Version>0.1.0-alpha</Version>
+    <Authors>Thiago Charao</Authors>
+    <Description>Core abstractions for AIFirst.CSharp - AI-first C# SDK for MCP tool-calling with compile-time safety</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/thiagocharao/ai-first</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/thiagocharao/ai-first</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ai;mcp;tools;governance;semantic-kernel</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+</Project>
