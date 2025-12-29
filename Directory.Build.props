@@ -8,13 +8,17 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>aifirst-icon.png</PackageIcon>
     <PackageReleaseNotes>See CHANGELOG.md for details.</PackageReleaseNotes>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <ContinuousIntegrationBuild Condition="'$(CI)' != ''">true</ContinuousIntegrationBuild>
     <Version>0.1.0-alpha</Version>
+  </PropertyGroup>
+
+  <!-- Generate XML docs only for packable projects (libraries) -->
+  <PropertyGroup Condition="'$(IsPackable)' != 'false'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsPackable)' != 'false'">
