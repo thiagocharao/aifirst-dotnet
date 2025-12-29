@@ -6,7 +6,7 @@
     <RepositoryUrl>https://github.com/thiagocharao/ai-first</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageIcon>aifirst-dotnet-icon.svg</PackageIcon>
+    <PackageIcon>aifirst-icon.png</PackageIcon>
     <PackageReleaseNotes>See CHANGELOG.md for details.</PackageReleaseNotes>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -20,7 +20,7 @@
   <ItemGroup Condition="'$(IsPackable)' != 'false'">
     <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" />
     <None Include="$(MSBuildThisFileDirectory)CHANGELOG.md" Pack="true" PackagePath="\" />
-    <None Include="$(MSBuildThisFileDirectory)assets/aifirst-dotnet-icon.svg" Pack="true" PackagePath="\" />
+    <None Include="$(MSBuildThisFileDirectory)assets/aifirst-icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsPackable)' != 'false'">
