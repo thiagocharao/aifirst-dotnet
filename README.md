@@ -22,26 +22,59 @@ AIFirst.DotNet solves these with:
 ✅ **Observability** — trace every prompt and tool call for debugging and compliance  
 ✅ **MCP-native** — leverage the emerging standard for tool interoperability
 
-## Goals
+## Features
 
-- **Typed tools** generated from MCP schemas
-- **Compile-time validation** for tool names and argument shapes
-- **Policy pipeline** for allowlists, redaction, and safety checks
-- **Tracing + replay** for observability and debugging
-- **Broad compatibility** via `netstandard2.0`, `net6.0`, and `net8.0` targets
+### MCP Client
+Connect to any MCP-compliant server and discover tools:
 
-## Repo layout
+```csharp
+await using var transport = new StdioMcpTransport("npx", "@modelcontextprotocol/server-filesystem", "/tmp");
+await using var client = new McpClient(transport);
+
+var tools = await client.ListToolsAsync();
+var result = await client.CallToolAsync("read_file", new { path = "/tmp/test.txt" });
+```
+
+### JSON Schema Parser & Code Generation
+Parse tool schemas and generate strongly-typed DTOs:
+
+```csharp
+// Parse JSON Schema
+var schema = JsonSchemaParser.Parse(toolSchema);
+
+// Generate C# records
+var code = DtoGenerator.GenerateRecord(schema, "WeatherRequest", "MyApp.Tools");
+```
+
+### CLI Tool
+```bash
+# Discover tools from MCP server and save manifest
+aifirst pull-tools npx @modelcontextprotocol/server-filesystem /tmp
+
+# Generate C# DTOs from manifest
+aifirst gen aifirst.tools.json --namespace MyApp.Tools --output Tools.cs
+```
+
+### Attribute DSL (Coming Soon)
+```csharp
+[Tool("weather.getForecast")]
+public static partial Task<Forecast> GetForecastAsync(ForecastRequest request);
+```
+
+The source generator will emit MCP calls for these tool methods.
+
+## Repo Layout
 
 ```
 /src
-  /AIFirst.Core          # Core abstractions
-  /AIFirst.Mcp           # MCP client
+  /AIFirst.Core          # Core abstractions, schema parser, code generator
+  /AIFirst.Mcp           # MCP client and transports
   /AIFirst.Roslyn        # Source generator + analyzer
   /AIFirst.Cli           # CLI tool (aifirst)
   /AIFirst.DotNet        # Meta package (Core + Mcp + Roslyn)
 /samples
   /HelloMcp              # Basic MCP connectivity
-  /TypedToolsDemo        # Type-safe tool calls
+  /TypedToolsDemo        # Type-safe tool calls and code generation
   /PolicyAndTracingDemo  # Governance and observability
 /tests
   /AIFirst.Core.Tests
@@ -52,15 +85,6 @@ AIFirst.DotNet solves these with:
   design.md              # Architecture
   threat-model.md        # Security considerations
 ```
-
-## Attribute DSL
-
-```csharp
-[Tool("weather.getForecast")]
-public static partial Task<Forecast> GetForecastAsync(ForecastRequest request);
-```
-
-The source generator will emit MCP calls for these tool methods.
 
 ## Build
 
@@ -74,34 +98,35 @@ dotnet build
 dotnet test
 ```
 
-**Note:** Tests and samples target net8.0 to match CI. If you have .NET 6 locally, the SDK will roll forward to build net8.0 targets.
+## Packages
 
-## Packages and feeds
+| Package | Description |
+|---------|-------------|
+| `AIFirst.DotNet` | Meta package (includes all below) |
+| `AIFirst.Core` | Core abstractions, schema parser, code generator |
+| `AIFirst.Mcp` | MCP client and transports |
+| `AIFirst.Roslyn` | Source generator and analyzers |
+| `AIFirst.Cli` | CLI tool (`aifirst`) |
 
-**Packages**
-- `AIFirst.DotNet` (meta package)
-- `AIFirst.Core`
-- `AIFirst.Mcp`
-- `AIFirst.Roslyn`
-- `AIFirst.Cli` (tool)
+## Roadmap
 
-**Feeds**
-- NuGet.org for stable releases
-- GitHub Packages for prerelease/nightly builds
-- Azure Artifacts for enterprise/private feeds
-- Cloudsmith for a managed multi-feed option
+Track development progress and upcoming features on the [Issues page](https://github.com/thiagocharao/aifirst-dotnet/issues).
 
-See `docs/nuget.md` for feed setup and release guidance.
+**Completed:**
+- ✅ M0: Build foundation
+- ✅ M1: MCP client with stdio transport
+- ✅ M2: JSON Schema parser and DTO code generator
 
-## Current Status
+**In Progress:**
+- 🚧 M3: Source generator and analyzers
 
-🚧 **MVP in Progress** — Milestone 0 (Build Foundation) complete
-
-See [CHANGELOG.md](CHANGELOG.md) for details and repository issues for implementation progress.
+**Planned:**
+- M4: Policy pipeline and tracing
+- M5: Documentation and release
 
 ## Contributing
 
-This project is in early development. Contributions welcome once Milestone 3 is complete.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 

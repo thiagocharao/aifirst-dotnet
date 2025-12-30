@@ -1,10 +1,13 @@
 # Contributing to AIFirst.DotNet
 
-Thank you for considering contributing to AIFirst.DotNet! This project is in early development.
+Thank you for considering contributing to AIFirst.DotNet!
 
 ## Development Status
 
-🚧 **MVP in Progress** — The project is currently building out core functionality through Milestone 4. Contributions are welcome once Milestone 3 is complete.
+Track development progress on the [Issues page](https://github.com/thiagocharao/aifirst-dotnet/issues).
+
+**Completed:** M0 (Foundation), M1 (MCP Client), M2 (Typed Tools)  
+**In Progress:** M3 (Source Generator)
 
 ## Getting Started
 
@@ -17,8 +20,8 @@ Thank you for considering contributing to AIFirst.DotNet! This project is in ear
 ### Setup
 
 ```bash
-git clone https://github.com/thiagocharao/ai-first.git
-cd ai-first
+git clone https://github.com/thiagocharao/aifirst-dotnet.git
+cd aifirst-dotnet
 dotnet restore
 dotnet build
 dotnet test
