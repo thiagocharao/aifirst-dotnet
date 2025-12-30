@@ -24,6 +24,46 @@ dotnet build
 dotnet test
 ```
 
+## Local Validation (Required Before Push)
+
+Always run build and tests before pushing (CI-equivalent commands):
+
+```bash
+dotnet restore
+dotnet build --configuration Release --no-restore
+dotnet test --configuration Release --no-build --verbosity normal
+```
+
+If you changed anything in `src/**`, also build each library per target framework:
+
+```bash
+for project in src/AIFirst.Core/AIFirst.Core.csproj \
+               src/AIFirst.Mcp/AIFirst.Mcp.csproj \
+               src/AIFirst.Roslyn/AIFirst.Roslyn.csproj \
+               src/AIFirst.DotNet/AIFirst.DotNet.csproj; do
+  for framework in netstandard2.0 net6.0 net8.0; do
+    dotnet build "$project" --configuration Release --no-restore -f "$framework"
+  done
+done
+```
+
+If you touched any packable project (`src/**`), `Directory.Build.props`, `Directory.Packages.props`,
+`CHANGELOG.md`, or `README.md`, also run:
+
+```bash
+dotnet pack --configuration Release --no-build --output ./artifacts
+```
+
+### Component Test Guidance
+
+Use these for quick feedback while iterating, then run the full test suite before pushing:
+
+- `src/AIFirst.Core/**` -> `dotnet test tests/AIFirst.Core.Tests/AIFirst.Core.Tests.csproj`
+- `src/AIFirst.Mcp/**` or `src/AIFirst.Mcp/Transport/**` -> `dotnet test tests/AIFirst.Mcp.Tests/AIFirst.Mcp.Tests.csproj`
+- `src/AIFirst.Roslyn/**` -> `dotnet test tests/AIFirst.Roslyn.Tests/AIFirst.Roslyn.Tests.csproj`
+- `src/AIFirst.Cli/**` -> `dotnet test tests/AIFirst.Cli.Tests/AIFirst.Cli.Tests.csproj`
+- Cross-cutting changes in `AIFirst.Core` or shared contracts -> run all tests.
+
 ## Coding Guidelines
 
 See `.github/copilot-instructions.md` for code style preferences:

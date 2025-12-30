@@ -1,4 +1,5 @@
 using AIFirst.Mcp;
+using AIFirst.Mcp.Transport;
 
 namespace AIFirst.Cli;
 
@@ -16,7 +17,15 @@ public static class Program
 
         if (args[0].Equals("list-tools", StringComparison.OrdinalIgnoreCase))
         {
-            var client = new McpClientAdapter();
+            if (args.Length < 2)
+            {
+                Console.WriteLine("Usage: list-tools <serverCommand> [serverArgs...]");
+                return 1;
+            }
+
+            var serverCommand = args[1];
+            var serverArgs = args.Skip(2).ToArray();
+            await using var client = new McpClient(new StdioMcpTransport(serverCommand, serverArgs));
             var tools = await client.ListToolsAsync();
             Console.WriteLine($"Tools discovered: {tools.Count}");
             return 0;

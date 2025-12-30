@@ -31,4 +31,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 First alpha release - coming soon!
 
-[Unreleased]: https://github.com/thiagocharao/ai-first/compare/main...HEAD
+[Unreleased]: https://github.com/thiagocharao/aifirst-dotnet/compare/main...HEAD

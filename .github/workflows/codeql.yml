@@ -21,13 +21,20 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: csharp
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+    - name: Build
+      run: |
+        dotnet restore
+        dotnet build --configuration Release --no-restore
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3

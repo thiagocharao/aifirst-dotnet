@@ -11,7 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Text.Json" />
     <PackageReference Include="System.Threading.Tasks.Extensions" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
     <Compile Include="$(MSBuildThisFileDirectory)../Polyfills/IsExternalInit.cs" Link="Polyfills/IsExternalInit.cs" />
   </ItemGroup>
 

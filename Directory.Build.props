@@ -2,8 +2,8 @@
   <PropertyGroup>
     <Authors>Thiago Charao</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/thiagocharao/ai-first</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/thiagocharao/ai-first</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/thiagocharao/aifirst-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/thiagocharao/aifirst-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>aifirst-icon.png</PackageIcon>
